@@ -3,7 +3,6 @@ import Buttons.LaunchMethods;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 
 public class MainMenu implements ActionListener {
@@ -17,6 +16,8 @@ public class MainMenu implements ActionListener {
     JButton youtubeButton = new JButton("Watch Youtube");
     JButton minecraftButton = new JButton("Play Minecraft");
     JButton ampButton = new JButton("Play Guitar");
+    JButton musicButton = new JButton("Listen to music!");
+
 
     MainMenu() {
 
@@ -32,17 +33,27 @@ public class MainMenu implements ActionListener {
         minecraftButton.setFocusable(false);
         minecraftButton.addActionListener(this);
 
-        ampButton.setBounds(100, 220, 200, 40);
+        ampButton.setBounds(100, 290, 200, 40);
         ampButton.setFocusable(false);
         ampButton.addActionListener(this);
+
+
+        musicButton.setBounds(100, 360, 200, 40);
+        musicButton.setFocusable(false);
+        musicButton.addActionListener(this);
 
         frame.add(netflixButton);
         frame.add(youtubeButton);
         frame.add(minecraftButton);
+        frame.add(ampButton);
+        frame.add(musicButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400,600);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setLocation(750, 270);
+        frame.setTitle("Main shit");
+
 
     }
 
@@ -63,6 +74,10 @@ public class MainMenu implements ActionListener {
         }else if (e.getSource()==ampButton) {
             String path = "C:\\Program Files\\Neural DSP\\Mesa Boogie Mark IIC+ Suite.exe";
             ampLauncher(path);
+        }else if (e.getSource()==musicButton) {
+            String path = "C:\\Users\\grays\\AppData\\Roaming\\Spotify\\Spotify.exe";
+            musicLauncher(path);
+
         }
 
     }
@@ -98,6 +113,16 @@ public class MainMenu implements ActionListener {
     }
 
     public void ampLauncher(String path){
+        Runtime rt = Runtime.getRuntime();
+        try{
+            Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void musicLauncher(String path){
         Runtime rt = Runtime.getRuntime();
         try{
             Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);

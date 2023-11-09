@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
 public class LaunchPage implements ActionListener {
 
     JFrame frame = new JFrame();
@@ -19,6 +21,8 @@ public class LaunchPage implements ActionListener {
         frame.setSize(400,600);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setLocation(750, 270);
+        frame.setTitle("Welcome Gamer!");
 
     }
 
