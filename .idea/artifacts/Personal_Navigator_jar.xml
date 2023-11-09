@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Personal Navigator:jar">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="Personal Navigator.jar">
+      <element id="module-output" name="Personal Navigator" />
+    </root>
+  </artifact>
+</component>
