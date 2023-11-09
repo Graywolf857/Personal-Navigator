@@ -16,7 +16,7 @@ public class MainMenu implements ActionListener {
     JButton netflixButton = new JButton("Watch Netflix");
     JButton youtubeButton = new JButton("Watch Youtube");
     JButton minecraftButton = new JButton("Play Minecraft");
-    LaunchMethods a = new LaunchMethods();
+    JButton ampButton = new JButton("Play Guitar");
 
     MainMenu() {
 
@@ -31,6 +31,10 @@ public class MainMenu implements ActionListener {
         minecraftButton.setBounds(100, 220, 200, 40);
         minecraftButton.setFocusable(false);
         minecraftButton.addActionListener(this);
+
+        ampButton.setBounds(100, 220, 200, 40);
+        ampButton.setFocusable(false);
+        ampButton.addActionListener(this);
 
         frame.add(netflixButton);
         frame.add(youtubeButton);
@@ -51,8 +55,14 @@ public class MainMenu implements ActionListener {
         }else if(e.getSource()==youtubeButton){
             String url = "https://www.youtube.com/";
             launchYoutube(url);
-        }else if(e.getSource()==minecraftButton){
+
+        }else if(e.getSource()==minecraftButton) {
             String path = "C:\\Users\\grays\\AppData\\Local\\Programs\\launcher\\Lunar Client.exe";
+            launchLunarLauncher(path);
+
+        }else if (e.getSource()==ampButton) {
+            String path = "C:\\Program Files\\Neural DSP\\Mesa Boogie Mark IIC+ Suite.exe";
+            ampLauncher(path);
         }
 
     }
@@ -79,12 +89,23 @@ public class MainMenu implements ActionListener {
 
     public void launchLunarLauncher(String path){
         Runtime rt = Runtime.getRuntime();
-        File file = new File(path);
         try{
-            rt.exec("rundll32 url.dll,FileProtocolHandler " + path);
+            Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
+    public void ampLauncher(String path){
+        Runtime rt = Runtime.getRuntime();
+        try{
+            Process p = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
